@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>console-sf</title>
+    <link rel="icon" href="data:," />
+    <script>
+      // the loading screen is play's own: the capture harness and the asset viewer never show it (src/loading/)
+      if (/[?&](harness|asset)(=|&|$)/.test(location.search)) document.documentElement.classList.add('no-loading');
+    </script>
+    <style>html,body{background:#000;height:100%;margin:0;overflow:hidden}#game{width:100vw;height:100vh;display:block}#hud{color:#fff;text-shadow:0 1px 2px #000;white-space:pre-wrap;pointer-events:none;opacity:.85;font:12px/1.45 ui-monospace,Menlo,monospace;position:fixed;bottom:10px;left:12px;right:12px}@media (max-width:900px){#hud{font-size:10.5px}}#hint{color:#fff;text-shadow:0 1px 3px #000;pointer-events:none;text-align:center;justify-content:center;align-items:center;font:15px/1.6 ui-monospace,Menlo,monospace;display:flex;position:fixed;inset:0}#fatal{z-index:20;color:#fcc;white-space:pre-wrap;background:#300;padding:24px;font:13px/1.5 ui-monospace,Menlo,monospace;display:none;position:fixed;inset:0}#loading{z-index:10;background:#0d0a08;transition:opacity .8s;position:fixed;inset:0;overflow:hidden}#loading.gone{opacity:0;pointer-events:none}.no-loading #loading{display:none}#loading .shots{opacity:0;transition:opacity 1.2s;position:absolute;inset:0}#loading .shots.ready{opacity:1}#loading .shots img{object-fit:cover;opacity:0;filter:blur(2px);will-change:opacity, transform;width:100%;height:100%;animation:30s ease-in-out infinite both shot-fade,30s linear infinite both shot-drift-a;position:absolute;inset:0}#loading .shots img:nth-child(2n){animation-name:shot-fade,shot-drift-b}#loading .shots img:first-child{animation-delay:-1.5s}#loading .shots img:nth-child(2){animation-delay:3.5s}#loading .shots img:nth-child(3){animation-delay:8.5s}#loading .shots img:nth-child(4){animation-delay:13.5s}#loading .shots img:nth-child(5){animation-delay:18.5s}#loading .shots img:nth-child(6){animation-delay:23.5s}@keyframes shot-fade{0%{opacity:0}5%{opacity:1}16.667%{opacity:1}21.667%{opacity:0}to{opacity:0}}@keyframes shot-drift-a{0%{transform:scale(1.06)translate(-1.2%,.5%)}21.667%,to{transform:scale(1.13)translate(1.2%,-.5%)}}@keyframes shot-drift-b{0%{transform:scale(1.14)translate(1%,-.6%)}21.667%,to{transform:scale(1.07)translate(-1%,.4%)}}@media (prefers-reduced-motion:reduce){#loading .shots img{animation-name:shot-fade;transform:scale(1.05)}}#loading .shade{background:radial-gradient(130% 100% at 50% 38%,#0000 55%,#00000080 100%),linear-gradient(#0000 54%,#0a060366 76%,#0a0603e0 100%);position:absolute;inset:0}#loading .panel{color:#fff3e3;text-shadow:0 1px 12px #00000080;grid-template-columns:1fr auto;align-items:end;column-gap:32px;font-family:-apple-system,Helvetica Neue,Segoe UI,Arial,sans-serif;display:grid;position:absolute;bottom:clamp(22px,7vh,72px);left:clamp(16px,5vw,80px);right:clamp(16px,5vw,80px)}#loading .city{letter-spacing:.34em;text-transform:uppercase;opacity:.72;font-size:11px;font-weight:600}#loading .spot{letter-spacing:.005em;margin-top:10px;font:italic 400 clamp(32px,4.4vw,60px)/1 Iowan Old Style,Palatino Linotype,Palatino,Georgia,serif}#loading .status{letter-spacing:.08em;opacity:.82;white-space:nowrap;padding-bottom:4px;font-size:12px}#loading .pulse{vertical-align:1px;background:#ffd7a3;border-radius:50%;width:6px;height:6px;margin-right:10px;animation:.9s ease-in-out infinite alternate loading-pulse;display:inline-block}@keyframes loading-pulse{0%{opacity:.25}to{opacity:1}}#loading .bar{background:#fff3e329;grid-column:1/-1;height:2px;margin-top:18px;overflow:hidden}#loading-fill{transform-origin:0;will-change:transform;background:#ffd7a3;height:100%;transition:transform .3s linear;transform:scaleX(.015)}@media (max-width:600px){#loading .panel{grid-template-columns:1fr}#loading .status{margin-top:14px}}</style>
+    <script type="module" crossorigin src="./assets/index-DizSlYAP.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/three.core-CMmUIUzP.js">
+    <link rel="modulepreload" crossorigin href="./assets/uniforms-Bhz7fZ2N.js">
+    <link rel="modulepreload" crossorigin href="./assets/builder-DA6owUhM.js">
+    <link rel="modulepreload" crossorigin href="./assets/materials-CuD31TjA.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-CB6Dacmf.js">
+    <link rel="modulepreload" crossorigin href="./assets/rng-BVZPdspY.js">
+    <link rel="modulepreload" crossorigin href="./assets/paint-B2wJ_iH6.js">
+    <link rel="modulepreload" crossorigin href="./assets/common-qgnfNvgN.js">
+    <link rel="modulepreload" crossorigin href="./assets/skin-BSFu2WXi.js">
+    <link rel="modulepreload" crossorigin href="./assets/geom-92jFv6nx.js">
+    <link rel="modulepreload" crossorigin href="./assets/rig-e-hr26NST5.js">
+    <link rel="modulepreload" crossorigin href="./assets/look-CHHG-8Ni.js">
+    <link rel="modulepreload" crossorigin href="./assets/cast-Cb2S59Gk.js">
+    <link rel="modulepreload" crossorigin href="./assets/tiles-BtB7woOU.js">
+    <link rel="modulepreload" crossorigin href="./assets/tiles-n_1UBUpq.js">
+    <link rel="modulepreload" crossorigin href="./assets/light-Cqr59Wu0.js">
+    <link rel="modulepreload" crossorigin href="./assets/mesh-VntNdv67.js">
+    <link rel="modulepreload" crossorigin href="./assets/dials-BtrV4Dll.js">
+    <link rel="modulepreload" crossorigin href="./assets/textures-DhrWuPe9.js">
+    <link rel="modulepreload" crossorigin href="./assets/geo-DOSvPEsb.js">
+    <link rel="modulepreload" crossorigin href="./assets/data-BjvCDtnD.js">
+    <link rel="modulepreload" crossorigin href="./assets/instantiate-Cr7u-sjn.js">
+    <link rel="modulepreload" crossorigin href="./assets/physics-T3MAyT-x.js">
+    <link rel="modulepreload" crossorigin href="./assets/geom-BgfF7bWU.js">
+    <link rel="modulepreload" crossorigin href="./assets/poses-C0Jvvh_U.js">
+    <link rel="modulepreload" crossorigin href="./assets/source-C9X6zBW2.js">
+    <link rel="modulepreload" crossorigin href="./assets/kit-BYVmFDaT.js">
+    <link rel="modulepreload" crossorigin href="./assets/gestures-Dt12y5fg.js">
+    <link rel="modulepreload" crossorigin href="./assets/figure-CeCTSu9i.js">
+    <link rel="modulepreload" crossorigin href="./assets/sources-7oI3x8P2.js">
+    <link rel="modulepreload" crossorigin href="./assets/crowd-Cp1qmjF2.js">
+    <link rel="modulepreload" crossorigin href="./assets/bounds-RA5kh3Tm.js">
+    <link rel="modulepreload" crossorigin href="./assets/contract-Dfvzj6n2.js">
+    <link rel="modulepreload" crossorigin href="./assets/robotaxi-BMYMtEV4.js">
+    <link rel="modulepreload" crossorigin href="./assets/_vehicle-kit-DycjeeM4.js">
+    <link rel="modulepreload" crossorigin href="./assets/registry-B3MTjCpm.js">
+    <link rel="modulepreload" crossorigin href="./assets/rooms-DrwVfhxV.js">
+    <link rel="modulepreload" crossorigin href="./assets/settings-BroNqkDz.js">
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+    <div id="hud"></div>
+    <div id="hint"></div>
+    <!-- the loading screen: shown until the first frame is drawn (src/loading/loading.ts); the stills and
+         their order are tools/loading-shots.mjs's list -->
+    <div id="loading">
+      <div class="shots">
+        <img src="./assets/skyline-classic-Ca3uDJ7h.jpg" alt="" fetchpriority="high" onload="this.parentNode.classList.add('ready')" onerror="this.parentNode.classList.add('ready')" />
+        <img src="./assets/divis-night-XixMq4kw.jpg" alt="" loading="lazy" />
+        <img src="./assets/steiner-CRsIVZoj.jpg" alt="" loading="lazy" />
+        <img src="./assets/classic-night-BZh5ZP-7.jpg" alt="" loading="lazy" />
+        <img src="./assets/hayes-vista-CV4ISGon.jpg" alt="" loading="lazy" />
+        <img src="./assets/walk-cross-golden-C2DaKsA1.jpg" alt="" loading="lazy" />
+      </div>
+      <div class="shade"></div>
+      <div class="panel">
+        <div>
+          <div class="city">San Francisco</div>
+          <div class="spot">Alamo Square</div>
+        </div>
+        <div class="status"><span class="pulse"></span><span id="loading-status">Loading</span></div>
+        <div class="bar"><div id="loading-fill"></div></div>
+      </div>
+    </div>
+    <div id="fatal"></div>
+  </body>
+</html>

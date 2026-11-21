@@ -1,0 +1,1 @@
+import{t as e}from"./kit-C-iwf9Xw.js";import{o as t,r as n}from"./_vehicle-kit-Bs5dh-2h.js";const r=n(t);var i=e({...r,params:{...r.params,lights:``},build(e,t){r.build(e,t),t.lights&&e.animate(e=>()=>void(e.userData.lights=t.lights))}});export{i as default};

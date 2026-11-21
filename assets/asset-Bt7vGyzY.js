@@ -1,0 +1,1 @@
+import{n as e,t}from"./_vehicle-kit-Bs5dh-2h.js";var n=e(`parked-car`,t);export{n as default};

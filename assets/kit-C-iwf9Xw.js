@@ -1,0 +1,1 @@
+import"./builder-CJI3fM3-.js";import"./uniforms-Al0udlK2.js";function e(e){return e}export{e as t};

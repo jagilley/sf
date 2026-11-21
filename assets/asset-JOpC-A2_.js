@@ -1,0 +1,1 @@
+import{t as e}from"./contract-Dfvzj6n2.js";import"./kit-BYVmFDaT.js";import{r as t}from"./_vehicle-kit-DycjeeM4.js";import{t as n}from"./robotaxi-BMYMtEV4.js";var r=t(n),i=e({...r,params:{...r.params,lights:``},build(e,t){r.build(e,t),t.lights&&e.animate(e=>()=>void(e.userData.lights=t.lights))}});export{i as default};
