@@ -1,0 +1,1 @@
+import{n as e,t}from"./_vehicle-kit-CuBTNnd_.js";var n=e(`parked-car`,t);export{n as default};

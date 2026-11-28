@@ -1,0 +1,182 @@
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./style-BOxgatJL.js","./three.core-CMmUIUzP.js","./rng-BVZPdspY.js","./paint-B2wJ_iH6.js","./kit-Dfvzj6n2.js","./style-_FWlm8x5.js","./build-DWNuKDJn.js","./uniforms-Bhz7fZ2N.js","./style-Bj83bnuw.js","./style-DIiFXPs3.js","./style-BsVMPczs.js","./style-DqejbE-3.js","./style-CNa0YdDM.js","./style-CQdQs9uF.js","./style-CcXjkAlf.js","./style-CG2QVSle.js"])))=>i.map(i=>d[i]);
+import{D as e,R as t,Wt as n,X as r,_ as i,bn as a,l as o,tn as s,un as c,ut as l,vn as u,z as d}from"./three.core-CMmUIUzP.js";import{n as f}from"./rng-BVZPdspY.js";import{l as p,p as m,t as h}from"./uniforms-Bhz7fZ2N.js";import{u as g}from"./builder-DA6owUhM.js";import{o as _,s as v}from"./materials-SOi59nxP.js";import{t as y}from"./preload-helper-DclECHGd.js";import{t as ee}from"./common-qgnfNvgN.js";import{t as b}from"./tiles-BtB7woOU.js";import{t as te}from"./tiles-n_1UBUpq.js";import{n as x,r as S,t as C}from"./light-BIKiYZmf.js";import{d as ne,f as re,i as w}from"./dials-DF-xHnaY.js";import{n as T}from"./rig-e-hr26NST5.js";function ie(e,t,n,r){let i=new Uint8Array(t*n);for(let r=0;r<t*n;r++)i[r]=+(e[r*4+3]>0);for(let a=0;a<r;a++){let r=[];for(let a=0;a<n;a++)for(let o=0;o<t;o++){let s=a*t+o;if(i[s])continue;let c=0,l=0,u=0,d=0;for(let r=-1;r<=1;r++)for(let s=-1;s<=1;s++){let f=o+s,p=a+r;if(f<0||p<0||f>=t||p>=n)continue;let m=p*t+f;i[m]&&(c+=e[m*4],l+=e[m*4+1],u+=e[m*4+2],d++)}d&&(e[s*4]=c/d,e[s*4+1]=l/d,e[s*4+2]=u/d,r.push(s))}if(!r.length)break;for(let e of r)i[e]=1}}function ae(e,t,n,r,i){let a=new Uint8Array(r*i*4);for(let o=0;o<i;o++)for(let i=0;i<r;i++){let s=0,c=0,l=0,u=0,d=0,f=0,p=0,m=0,h=0;for(let r=0;r<2;r++)for(let a=0;a<2;a++){let g=Math.min(t-1,i*2+a),_=(Math.min(n-1,o*2+r)*t+g)*4,v=e[_+3],y=Math.min(1,v/128);s+=e[_]*y,c+=e[_+1]*y,l+=e[_+2]*y,u+=v,d+=y,f+=e[_],p+=e[_+1],m+=e[_+2],h++}let g=(o*r+i)*4;d>0?(a[g]=s/d,a[g+1]=c/d,a[g+2]=l/d):(a[g]=f/h,a[g+1]=p/h,a[g+2]=m/h),a[g+3]=u/h}return a}var E=2048;function oe(e){return e>=8&&e<=256&&!(e&e-1)}function D(e,t){let n=typeof document<`u`?document.createElement(`canvas`):new OffscreenCanvas(e,t);n.width=e,n.height=t;let r=n.getContext(`2d`,{willReadFrequently:!0});if(!r)throw Error(`Canvas 2D unavailable`);return[n,r]}async function O(e,t,n){let[r,i]=typeof t.size==`number`?[t.size,t.size]:t.size;if(!oe(r)||!oe(i))throw Error(`tile "${e}": size ${r}x${i} must be powers of two between 8 and 256`);let[a,o]=D(r,i);if(t.draw)o.save(),t.draw(o,{w:r,h:i,rng:f(`${n}:${e}`)}),o.restore();else if(t.src){if(!t.source)throw Error(`tile "${e}": an image tile needs a "source" (self-made or a CC0 URL)`);let n=new Image;n.src=t.src;try{await n.decode()}catch{throw Error(`tile "${e}": could not load image ${t.src}`)}o.imageSmoothingEnabled=!0,o.drawImage(n,0,0,r,i)}else throw Error(`tile "${e}": needs draw() or src`);return a}function k(e,t,n,r){let i=t.width,a=t.height,o=n+8,s=r+8;e.save(),e.clearRect(n,r,i+16,a+16),e.beginPath(),e.rect(n,r,i+16,a+16),e.clip();for(let n=-1;n<=1;n++)for(let r=-1;r<=1;r++)e.drawImage(t,o+r*i,s+n*a);e.restore()}function A(e){let t=e.width,n=e.height;return j(new Uint8Array(e.getContext(`2d`,{willReadFrequently:!0}).getImageData(0,0,t,n).data.buffer.slice(0)),t,n)}function j(e,t,n){ie(e,t,n,4);let r=[{data:e,width:t,height:n}];for(let i=t,a=n,o=e;i>1||a>1;){let e=Math.max(1,i>>1),t=Math.max(1,a>>1);o=ae(o,i,a,e,t),r.push({data:o,width:e,height:t}),i=e,a=t}return r}function se(e,t,n){let[r,i]=D(e.width,e.height);i.drawImage(e,0,0);for(let r of t)M(i,e,r,n);return r}function M(e,t,n,r){let[i,a]=D(n.w,n.h);a.drawImage(t,n.x,n.y,n.w,n.h,0,0,n.w,n.h);let o=a.getImageData(0,0,n.w,n.h).data,s=!1;for(let e=3;e<o.length&&!s;e+=4)s=o[e]<8;a.save(),r(a,{name:n.name,w:n.w,h:n.h,cutout:s}),a.restore(),k(e,i,n.x-8,n.y-8)}var N=new WeakMap,P=new WeakMap;function ce(e,t){P.set(e,t)}function le(e,t,n,r){if(!e)return;let i=N.get(e)??P.get(e);i&&(i.restyle(n,r),i.prepare?.(t))}var F=class e{texture;canvas;tiles=new Map;constructor(e,n,r){if(this.canvas=e,this.tiles=n,r||!e){if(!r)throw Error(`Atlas: a view needs the texture it views`);this.texture=r,this.ownMips=null;return}let a=e.width,s=e.height,u=A(e),f=new i(u[0].data,a,s,l,c);this.ownMips=u,f.mipmaps=u,f.flipY=!1,f.colorSpace=``,f.magFilter=t,f.minFilter=d,f.generateMipmaps=!1,f.wrapS=f.wrapT=o,f.anisotropy=1,f.needsUpdate=!0,this.texture=f,N.set(f,this)}ownMips;styledAs=``;repaints=new Map;own(){return this.ownMips??=A(this.canvas)}get styled(){return this.styledAs}restyle(e,t){if(!this.canvas||(t||(e=``),e===this.styledAs))return;let n=e?this.repaints.get(e):this.own();n||(n=A(se(this.canvas,this.tiles.values(),t)),this.repaints.set(e,n)),this.texture.image={data:n[0].data,width:this.canvas.width,height:this.canvas.height},this.texture.mipmaps=n,this.texture.needsUpdate=!0,this.styledAs=e}static async build(t,n=1){let r=[...t.keys()].sort(),i=new Map;for(let e of r)i.set(e,await O(e,t.get(e),n));let a=[...r].sort((e,t)=>i.get(t).height-i.get(e).height||i.get(t).width-i.get(e).width||(e<t?-1:1)),o=512,s=e=>{let t=new Map,n=0,r=0,o=0;for(let s of a){let a=i.get(s),c=a.width+16,l=a.height+16;if(c>e)return null;n+c>e&&(n=0,r+=o,o=0),t.set(s,{x:n,y:r}),n+=c,o=Math.max(o,l)}return{out:t,height:r+o}},c=s(o);for(;!c||c.height>o;){if(o*=2,o>E)throw Error(`texture atlas overflow: tiles need more than ${E}x${E}. Use smaller tiles.`);c=s(o)}let l=64;for(;l<c.height;)l*=2;let[u,d]=D(o,l);d.fillStyle=`#ff00ff`,d.fillRect(0,0,o,l);let f=new Map;for(let e of r){let t=i.get(e),{x:n,y:r}=c.out.get(e),a=t.width,s=t.height,u=n+8,p=r+8;k(d,t,n,r),f.set(e,{name:e,x:u,y:p,w:a,h:s,rect:[u/o,p/l,a/o,s/l]})}let p=f.get(`wire`);h.uWireTile.value.set(p?p.rect[0]:-9,p?p.rect[1]:-9);let m=f.get(`asphalt`);return h.uAsphaltTile.value.set(m?m.rect[0]:-9,m?m.rect[1]:-9),new e(u,f)}has(e){return this.tiles.has(e)}get(e){let t=this.tiles.get(e);if(!t)throw Error(`unknown tile "${e}". Known tiles: ${[...this.tiles.keys()].sort().join(`, `)}`);return t}names(){return[...this.tiles.keys()].sort()}get size(){if(!this.canvas){let e=this.texture.image;return[e.width,e.height]}return[this.canvas.width,this.canvas.height]}static view(t,n){return new e(null,n,t)}get isView(){return!this.canvas}},ue=Object.assign({"./bright-air/style.ts":()=>y(()=>import(`./style-BOxgatJL.js`),__vite__mapDeps([0,1,2,3,4]),import.meta.url),"./comic-wash/style.ts":()=>y(()=>import(`./style-_FWlm8x5.js`),__vite__mapDeps([5,6,1,7,4,8,2,3]),import.meta.url),"./concept-classic/style.ts":()=>y(()=>import(`./style-DIiFXPs3.js`),__vite__mapDeps([9,1,4,2,3,7]),import.meta.url),"./concept-cross/style.ts":()=>y(()=>import(`./style-BsVMPczs.js`),__vite__mapDeps([10,1,4,2,3,7]),import.meta.url),"./concept-divis/style.ts":()=>y(()=>import(`./style-DqejbE-3.js`),__vite__mapDeps([11,1,4,2,3,7]),import.meta.url),"./example/style.ts":()=>y(()=>import(`./style-CNa0YdDM.js`),__vite__mapDeps([12,1,2,3,4]),import.meta.url),"./gouache/style.ts":()=>y(()=>import(`./style-CQdQs9uF.js`),__vite__mapDeps([13,8,1,4,2,3,7]),import.meta.url),"./line-wash/style.ts":()=>y(()=>import(`./style-CcXjkAlf.js`),__vite__mapDeps([14,6,1,7,4,8,2,3]),import.meta.url),"./print/style.ts":()=>y(()=>import(`./style-CG2QVSle.js`),__vite__mapDeps([15,1,4,2,7]),import.meta.url)}),I=new Map;for(let[e,t]of Object.entries(ue)){let n=e.match(/^\.\/([^/]+)\/style\.ts$/);n&&I.set(n[1],t)}var L=`line-wash`,R=`original`;function z(){return[L,R,...[...I.keys()].filter(e=>e!==L).sort()]}var B=new Map;function V(e){if(e&&e!=="default"||(e=L),e===`original`)return Promise.resolve(null);if(!B.has(e)){let t=I.get(e);if(!t)return Promise.reject(Error(`unknown style "${e}". Known styles: ${z().join(`, `)}`));B.set(e,t().then(t=>{let n=t.default;if(!n||typeof n!=`object`)throw Error(`style "${e}": src/look/styles/${e}/style.ts must default-export defineStyle({...})`);if(n.name!==e)throw Error(`style "${e}": defineStyle name is "${n.name}" but the folder is "${e}"`);return n}))}return B.get(e)}var H={def:null,version:0};function de(){return H.def?.name??`original`}var fe=structuredClone(p),U=structuredClone(m);function W(e,t,n){if(n)for(let n of Object.keys(e))n in t||delete e[n];for(let[r,i]of Object.entries(t))i&&typeof i==`object`&&!Array.isArray(i)&&e[r]&&typeof e[r]==`object`&&!Array.isArray(e[r])?W(e[r],i,n):e[r]=structuredClone(i)}function G(e){let t=p.weather;if(W(p,fe,!0),m.splice(0,m.length,...structuredClone(U)),e?.look&&W(p,e.look,!1),e?.time){let t=e.time(structuredClone(U));if(!Array.isArray(t)||!t.length)throw Error(`style "${e.name}": time() must return the table's rows`);m.splice(0,m.length,...t)}p.weather=t,e?.uniforms&&Object.assign(h,e.uniforms),e!==H.def&&(H.def=e,H.version++)}function pe(e){let t=e?.tiles;return!e||!t?null:{key:e.name,paint:(n,r)=>t(n,{...r,rng:f(`style:${e.name}:${r.name}`)})}}async function me(e){let t=await V(e);return G(t),t}var he=new URL(`h-gen1-small-DarLybnC.png`,import.meta.url).href,ge=new URL(`h-gen10-small-DY4E5sLH.png`,import.meta.url).href,_e=new URL(`h-gen11-small-Bt51mvm2.png`,import.meta.url).href,ve=new URL(`h-gen12-small-Bn3VRZbv.png`,import.meta.url).href,ye=new URL(`h-gen13-small-CPzPl64K.png`,import.meta.url).href,be=new URL(`h-gen1374-small-BBT3UjYx.png`,import.meta.url).href,xe=new URL(`h-gen14-small-BBdAenD1.png`,import.meta.url).href,Se=new URL(`h-gen15-small-WMwbr0rx.png`,import.meta.url).href,Ce=new URL(`h-gen16-small-C3zoBs4M.png`,import.meta.url).href,we=new URL(`h-gen17-small-ONcKsRe_.png`,import.meta.url).href,Te=new URL(`h-gen18-small-pMjtE-bv.png`,import.meta.url).href,Ee=new URL(`h-gen19-small-BAUM3Pjl.png`,import.meta.url).href,De=new URL(`h-gen2-small-C8ulNU9N.png`,import.meta.url).href,Oe=new URL(`h-gen20-small-B8e7721r.png`,import.meta.url).href,ke=new URL(`h-gen21-small-htHNAjbn.png`,import.meta.url).href,Ae=new URL(`h-gen22-small-C0O-upKB.png`,import.meta.url).href,je=new URL(`h-gen23-small-rHO9vHDa.png`,import.meta.url).href,Me=new URL(`h-gen24-small-VS22-jMI.png`,import.meta.url).href,Ne=new URL(`h-gen25-small-BvnwlkKY.png`,import.meta.url).href,Pe=new URL(`h-gen26-small-ak6byAx7.png`,import.meta.url).href,Fe=new URL(`h-gen27-small-BNmMG0x5.png`,import.meta.url).href,Ie=new URL(`h-gen28-small-BGHQ4QDp.png`,import.meta.url).href,Le=new URL(`h-gen29-small-mABHi7ND.png`,import.meta.url).href,Re=new URL(`h-gen3-small-Bmt6vZTF.png`,import.meta.url).href,ze=new URL(`h-gen30-small-DW_AnKiB.png`,import.meta.url).href,Be=new URL(`h-gen31-small-Dtey6gXD.png`,import.meta.url).href,Ve=new URL(`h-gen32-small-B27wdztC.png`,import.meta.url).href,He=new URL(`h-gen33-small-fdgs2Xii.png`,import.meta.url).href,Ue=new URL(`h-gen34-small-Bn2iukNh.png`,import.meta.url).href,We=new URL(`h-gen35-small-BsuCyZAt.png`,import.meta.url).href,Ge=new URL(`h-gen36-small-DU2FayOW.png`,import.meta.url).href,Ke=new URL(`h-gen37-small-DjrCSfgk.png`,import.meta.url).href,qe=new URL(`h-gen38-small-DZetuexw.png`,import.meta.url).href,Je=new URL(`h-gen39-small-DSPeSqMl.png`,import.meta.url).href,Ye=new URL(`h-gen4-small-Dh9zJFko.png`,import.meta.url).href,Xe=new URL(`h-gen40-small-DYZdDgQh.png`,import.meta.url).href,Ze=new URL(`h-gen41-small-DhdBYYa2.png`,import.meta.url).href,Qe=new URL(`h-gen42-small-CjrWmSuZ.png`,import.meta.url).href,$e=new URL(`h-gen43-small-B-uuYyg8.png`,import.meta.url).href,et=new URL(`h-gen44-small-Dl4Ninpw.png`,import.meta.url).href,tt=new URL(`h-gen45-small-BOD2pQyI.png`,import.meta.url).href,nt=new URL(`h-gen46-small-CHha9ywZ.png`,import.meta.url).href,rt=new URL(`h-gen47-small-DZZCqBKE.png`,import.meta.url).href,it=new URL(`h-gen48-small-CLX_Rk14.png`,import.meta.url).href,at=new URL(`h-gen5-small-BuxCpHiy.png`,import.meta.url).href,ot=new URL(`h-gen6-small-CdQ3oPkC.png`,import.meta.url).href,st=new URL(`h-gen7-small-l7beSwwA.png`,import.meta.url).href,ct=new URL(`h-gen8-small-B-pGbzYa.png`,import.meta.url).href,lt=new URL(`h-gen9-small-jCf03o6i.png`,import.meta.url).href,ut=new URL(`h-gen1-light-zjrIEkLk.png`,import.meta.url).href,dt=new URL(`h-gen10-light-B5QnC7ye.png`,import.meta.url).href,ft=new URL(`h-gen11-light-BRIDjNEy.png`,import.meta.url).href,pt=new URL(`h-gen12-light-CWtHw9P7.png`,import.meta.url).href,mt=new URL(`h-gen13-light-oNLTApew.png`,import.meta.url).href,ht=new URL(`h-gen1374-light-DsU4vk6z.png`,import.meta.url).href,gt=new URL(`h-gen14-light-D0okF2mL.png`,import.meta.url).href,_t=new URL(`h-gen15-light-DE9rucsI.png`,import.meta.url).href,vt=new URL(`h-gen16-light-D8yXRBJC.png`,import.meta.url).href,yt=new URL(`h-gen17-light-DxCL1Z6e.png`,import.meta.url).href,bt=new URL(`h-gen18-light-CRmZ0k6e.png`,import.meta.url).href,xt=new URL(`h-gen19-light-uqJp5uA_.png`,import.meta.url).href,St=new URL(`h-gen2-light-C9OvNdSk.png`,import.meta.url).href,Ct=new URL(`h-gen20-light-DT0lGS4A.png`,import.meta.url).href,wt=new URL(`h-gen21-light-Dj3yFslZ.png`,import.meta.url).href,Tt=new URL(`h-gen22-light-DkSqbSw6.png`,import.meta.url).href,Et=new URL(`h-gen23-light-BNYshqQq.png`,import.meta.url).href,Dt=new URL(`h-gen24-light-B3PNaVIm.png`,import.meta.url).href,Ot=new URL(`h-gen25-light-Cko5Ocog.png`,import.meta.url).href,kt=new URL(`h-gen26-light-LcGd6MsT.png`,import.meta.url).href,At=new URL(`h-gen27-light-DP6XvIQa.png`,import.meta.url).href,jt=new URL(`h-gen28-light-CpfFtdFx.png`,import.meta.url).href,Mt=new URL(`h-gen29-light-DCwClmr0.png`,import.meta.url).href,Nt=new URL(`h-gen3-light-CFQV5DO5.png`,import.meta.url).href,Pt=new URL(`h-gen30-light-COFVl9QW.png`,import.meta.url).href,Ft=new URL(`h-gen31-light-BbGCyaqV.png`,import.meta.url).href,It=new URL(`h-gen32-light-D5c3ShNV.png`,import.meta.url).href,Lt=new URL(`h-gen33-light-BGy5KA9X.png`,import.meta.url).href,Rt=new URL(`h-gen34-light-DFf-lCEO.png`,import.meta.url).href,zt=new URL(`h-gen35-light-CVUUAM76.png`,import.meta.url).href,Bt=new URL(`h-gen36-light-ycON36lb.png`,import.meta.url).href,Vt=new URL(`h-gen37-light-DgLMJT-Z.png`,import.meta.url).href,Ht=new URL(`h-gen38-light-CnkD0_yL.png`,import.meta.url).href,Ut=new URL(`h-gen39-light-DOk9-zXI.png`,import.meta.url).href,Wt=new URL(`h-gen4-light-Q1hJ-UwM.png`,import.meta.url).href,Gt=new URL(`h-gen40-light-B1BpsXXo.png`,import.meta.url).href,Kt=new URL(`h-gen41-light-DNbe4yfK.png`,import.meta.url).href,qt=new URL(`h-gen42-light--xFdXUqd.png`,import.meta.url).href,Jt=new URL(`h-gen43-light-FVKhwQNo.png`,import.meta.url).href,Yt=new URL(`h-gen44-light-D-reS4FD.png`,import.meta.url).href,Xt=new URL(`h-gen45-light-CmTqmPx1.png`,import.meta.url).href,Zt=new URL(`h-gen46-light-BuMTqDX3.png`,import.meta.url).href,Qt=new URL(`h-gen47-light-D_XCQKKm.png`,import.meta.url).href,$t=new URL(`h-gen48-light-Bxb9hOk1.png`,import.meta.url).href,en=new URL(`h-gen5-light-CkgwsmlY.png`,import.meta.url).href,tn=new URL(`h-gen6-light-f_Jsj1Jt.png`,import.meta.url).href,nn=new URL(`h-gen7-light-avM9ctq6.png`,import.meta.url).href,rn=new URL(`h-gen8-light-FjiHzKdF.png`,import.meta.url).href,an=new URL(`h-gen9-light-B9xdGlKl.png`,import.meta.url).href,on=new URL(`t-blazer-skirt-CQAVvlqc.png`,import.meta.url).href,sn=new URL(`t-blazer-sleeve-CkZtZB1Q.png`,import.meta.url).href,cn=new URL(`t-blazer-DQ7j3wgd.png`,import.meta.url).href,ln=new URL(`t-boot-CvHftUYl.png`,import.meta.url).href,un=new URL(`t-chinos-xLm7xuLB.png`,import.meta.url).href,dn=new URL(`t-coat-skirt-GnjurIes.png`,import.meta.url).href,fn=new URL(`t-coat-sleeve-CN3muMNy.png`,import.meta.url).href,pn=new URL(`t-coat-DK55-2oO.png`,import.meta.url).href,mn=new URL(`t-dress-skirt-C50km7NJ.png`,import.meta.url).href,hn=new URL(`t-dress-sleeve-CY2guw_8.png`,import.meta.url).href,gn=new URL(`t-dress-BULNbrzO.png`,import.meta.url).href,_n=new URL(`t-hoodie-skirt-CbLL7yDu.png`,import.meta.url).href,vn=new URL(`t-hoodie-sleeve-Dd3yTuZU.png`,import.meta.url).href,yn=new URL(`t-hoodie-XIUxeMbX.png`,import.meta.url).href,bn=new URL(`t-jeans-black-Bi8x-PYT.png`,import.meta.url).href,xn=new URL(`t-jeans-light-DKhh-wMm.png`,import.meta.url).href,Sn=new URL(`t-jeans-mid-BJpZa2PE.png`,import.meta.url).href,Cn=new URL(`t-jeans-rinse-BrsfsBMY.png`,import.meta.url).href,wn=new URL(`t-knit-skirt-D1VhlUg7.png`,import.meta.url).href,Tn=new URL(`t-knit-sleeve-UW1zMDVW.png`,import.meta.url).href,En=new URL(`t-knit-Bfyvq7hz.png`,import.meta.url).href,Dn=new URL(`t-leather-skirt-BdeA70GO.png`,import.meta.url).href,On=new URL(`t-leather-sleeve-Dstm1rmv.png`,import.meta.url).href,kn=new URL(`t-leather-CtlXLhFo.png`,import.meta.url).href,An=new URL(`t-puffer-skirt-j05mtsQK.png`,import.meta.url).href,jn=new URL(`t-puffer-sleeve-DNoOzbUZ.png`,import.meta.url).href,Mn=new URL(`t-puffer-BLSU2t-z.png`,import.meta.url).href,Nn=new URL(`t-shirt-NGkGGcAd.png`,import.meta.url).href,Pn=new URL(`t-shoe-leather-BCl3W2JU.png`,import.meta.url).href,Fn=new URL(`t-skin-arm-f-DwK7rMUA.png`,import.meta.url).href,In=new URL(`t-skin-arm-m-CGXt_0WY.png`,import.meta.url).href,Ln=new URL(`t-skin-hand-f-cruRiv4P.png`,import.meta.url).href,Rn=new URL(`t-skin-hand-m-DbevXoXq.png`,import.meta.url).href,zn=new URL(`t-skin-leg-f-Dhk5iMPx.png`,import.meta.url).href,Bn=new URL(`t-skin-neck-f-CwOc6q34.png`,import.meta.url).href,Vn=new URL(`t-skin-neck-m-B8j7cGhb.png`,import.meta.url).href,Hn=new URL(`t-slacks-DKwP7_Zk.png`,import.meta.url).href,Un=new URL(`t-sneaker-black-BQYgQHId.png`,import.meta.url).href,Wn=new URL(`t-sneaker-white-TI1MvOqK.png`,import.meta.url).href,Gn=new URL(`t-tank-black-iOL9iu5Z.png`,import.meta.url).href,Kn=new URL(`t-tee-dark-BULGGPWK.png`,import.meta.url).href,qn=new URL(`t-tee-m-Dw-NVWSR.png`,import.meta.url).href,Jn=new URL(`t-tee-sleeve-dark-DiJfuHNG.png`,import.meta.url).href,Yn=new URL(`t-tee-sleeve-D-jtGCiD.png`,import.meta.url).href,Xn=new URL(`t-waist-mid-lOaE6Z3H.png`,import.meta.url).href,Zn=new URL(`t-waist-rinse-CCfoQhDZ.png`,import.meta.url).href,Qn=`d-f25-mitt.d-f35-mitt.d-f35-skin.d-m30-mitt.d-m60-mitt.t-blazer.t-blazer-skirt.t-blazer-sleeve.t-boot.t-chinos.t-coat.t-coat-skirt.t-coat-sleeve.t-dress.t-dress-skirt.t-dress-sleeve.t-hoodie.t-hoodie-skirt.t-hoodie-sleeve.t-jeans-black.t-jeans-light.t-jeans-mid.t-jeans-rinse.t-knit.t-knit-skirt.t-knit-sleeve.t-leather.t-leather-skirt.t-leather-sleeve.t-puffer.t-puffer-skirt.t-puffer-sleeve.t-shirt.t-shoe-leather.t-skin-arm-f.t-skin-arm-m.t-skin-hand-f.t-skin-hand-m.t-skin-leg-f.t-skin-neck-f.t-skin-neck-m.t-slacks.t-sneaker-black.t-sneaker-white.t-tank-black.t-tee-dark.t-tee-m.t-tee-sleeve.t-tee-sleeve-dark.t-waist-mid.t-waist-rinse`.split(`.`),K=T*3,$n=Object.assign({"./heads/h-gen1-small.png":he,"./heads/h-gen10-small.png":ge,"./heads/h-gen11-small.png":_e,"./heads/h-gen12-small.png":ve,"./heads/h-gen13-small.png":ye,"./heads/h-gen1374-small.png":be,"./heads/h-gen14-small.png":xe,"./heads/h-gen15-small.png":Se,"./heads/h-gen16-small.png":Ce,"./heads/h-gen17-small.png":we,"./heads/h-gen18-small.png":Te,"./heads/h-gen19-small.png":Ee,"./heads/h-gen2-small.png":De,"./heads/h-gen20-small.png":Oe,"./heads/h-gen21-small.png":ke,"./heads/h-gen22-small.png":Ae,"./heads/h-gen23-small.png":je,"./heads/h-gen24-small.png":Me,"./heads/h-gen25-small.png":Ne,"./heads/h-gen26-small.png":Pe,"./heads/h-gen27-small.png":Fe,"./heads/h-gen28-small.png":Ie,"./heads/h-gen29-small.png":Le,"./heads/h-gen3-small.png":Re,"./heads/h-gen30-small.png":ze,"./heads/h-gen31-small.png":Be,"./heads/h-gen32-small.png":Ve,"./heads/h-gen33-small.png":He,"./heads/h-gen34-small.png":Ue,"./heads/h-gen35-small.png":We,"./heads/h-gen36-small.png":Ge,"./heads/h-gen37-small.png":Ke,"./heads/h-gen38-small.png":qe,"./heads/h-gen39-small.png":Je,"./heads/h-gen4-small.png":Ye,"./heads/h-gen40-small.png":Xe,"./heads/h-gen41-small.png":Ze,"./heads/h-gen42-small.png":Qe,"./heads/h-gen43-small.png":$e,"./heads/h-gen44-small.png":et,"./heads/h-gen45-small.png":tt,"./heads/h-gen46-small.png":nt,"./heads/h-gen47-small.png":rt,"./heads/h-gen48-small.png":it,"./heads/h-gen5-small.png":at,"./heads/h-gen6-small.png":ot,"./heads/h-gen7-small.png":st,"./heads/h-gen8-small.png":ct,"./heads/h-gen9-small.png":lt}),er=Object.assign({"./heads/light/h-gen1-light.png":ut,"./heads/light/h-gen10-light.png":dt,"./heads/light/h-gen11-light.png":ft,"./heads/light/h-gen12-light.png":pt,"./heads/light/h-gen13-light.png":mt,"./heads/light/h-gen1374-light.png":ht,"./heads/light/h-gen14-light.png":gt,"./heads/light/h-gen15-light.png":_t,"./heads/light/h-gen16-light.png":vt,"./heads/light/h-gen17-light.png":yt,"./heads/light/h-gen18-light.png":bt,"./heads/light/h-gen19-light.png":xt,"./heads/light/h-gen2-light.png":St,"./heads/light/h-gen20-light.png":Ct,"./heads/light/h-gen21-light.png":wt,"./heads/light/h-gen22-light.png":Tt,"./heads/light/h-gen23-light.png":Et,"./heads/light/h-gen24-light.png":Dt,"./heads/light/h-gen25-light.png":Ot,"./heads/light/h-gen26-light.png":kt,"./heads/light/h-gen27-light.png":At,"./heads/light/h-gen28-light.png":jt,"./heads/light/h-gen29-light.png":Mt,"./heads/light/h-gen3-light.png":Nt,"./heads/light/h-gen30-light.png":Pt,"./heads/light/h-gen31-light.png":Ft,"./heads/light/h-gen32-light.png":It,"./heads/light/h-gen33-light.png":Lt,"./heads/light/h-gen34-light.png":Rt,"./heads/light/h-gen35-light.png":zt,"./heads/light/h-gen36-light.png":Bt,"./heads/light/h-gen37-light.png":Vt,"./heads/light/h-gen38-light.png":Ht,"./heads/light/h-gen39-light.png":Ut,"./heads/light/h-gen4-light.png":Wt,"./heads/light/h-gen40-light.png":Gt,"./heads/light/h-gen41-light.png":Kt,"./heads/light/h-gen42-light.png":qt,"./heads/light/h-gen43-light.png":Jt,"./heads/light/h-gen44-light.png":Yt,"./heads/light/h-gen45-light.png":Xt,"./heads/light/h-gen46-light.png":Zt,"./heads/light/h-gen47-light.png":Qt,"./heads/light/h-gen48-light.png":$t,"./heads/light/h-gen5-light.png":en,"./heads/light/h-gen6-light.png":tn,"./heads/light/h-gen7-light.png":nn,"./heads/light/h-gen8-light.png":rn,"./heads/light/h-gen9-light.png":an}),q=Object.assign({"./bodies/t-blazer-skirt.png":on,"./bodies/t-blazer-sleeve.png":sn,"./bodies/t-blazer.png":cn,"./bodies/t-boot.png":ln,"./bodies/t-chinos.png":un,"./bodies/t-coat-skirt.png":dn,"./bodies/t-coat-sleeve.png":fn,"./bodies/t-coat.png":pn,"./bodies/t-dress-skirt.png":mn,"./bodies/t-dress-sleeve.png":hn,"./bodies/t-dress.png":gn,"./bodies/t-hoodie-skirt.png":_n,"./bodies/t-hoodie-sleeve.png":vn,"./bodies/t-hoodie.png":yn,"./bodies/t-jeans-black.png":bn,"./bodies/t-jeans-light.png":xn,"./bodies/t-jeans-mid.png":Sn,"./bodies/t-jeans-rinse.png":Cn,"./bodies/t-knit-skirt.png":wn,"./bodies/t-knit-sleeve.png":Tn,"./bodies/t-knit.png":En,"./bodies/t-leather-skirt.png":Dn,"./bodies/t-leather-sleeve.png":On,"./bodies/t-leather.png":kn,"./bodies/t-puffer-skirt.png":An,"./bodies/t-puffer-sleeve.png":jn,"./bodies/t-puffer.png":Mn,"./bodies/t-shirt.png":Nn,"./bodies/t-shoe-leather.png":Pn,"./bodies/t-skin-arm-f.png":Fn,"./bodies/t-skin-arm-m.png":In,"./bodies/t-skin-hand-f.png":Ln,"./bodies/t-skin-hand-m.png":Rn,"./bodies/t-skin-leg-f.png":zn,"./bodies/t-skin-neck-f.png":Bn,"./bodies/t-skin-neck-m.png":Vn,"./bodies/t-slacks.png":Hn,"./bodies/t-sneaker-black.png":Un,"./bodies/t-sneaker-white.png":Wn,"./bodies/t-tank-black.png":Gn,"./bodies/t-tee-dark.png":Kn,"./bodies/t-tee-m.png":qn,"./bodies/t-tee-sleeve-dark.png":Jn,"./bodies/t-tee-sleeve.png":Yn,"./bodies/t-waist-mid.png":Xn,"./bodies/t-waist-rinse.png":Zn}),J=new Set(new URLSearchParams(globalThis.location?.search??``).get(`peoplediag`)?.split(`,`)??[]);async function tr(e){let t=0,n=0,r=[];for(let i of e){let e=b[i],[a,o]=typeof e.size==`number`?[e.size,e.size]:e.size,s=document.createElement(`canvas`),c=document.createElement(`canvas`);s.width=c.width=a,s.height=c.height=o;let l=s.getContext(`2d`,{willReadFrequently:!0}),u=c.getContext(`2d`,{willReadFrequently:!0});e.draw(l,{w:a,h:o,rng:f(`1:${i}`)});let d=new Image;d.src=q[`./bodies/${i}.png`],await d.decode(),u.imageSmoothingEnabled=!0,u.drawImage(d,0,0,a,o);let p=l.getImageData(0,0,a,o).data,m=u.getImageData(0,0,a,o).data,h=0;for(let e=0;e<p.length;e++)p[e]!==m[e]&&(h++,n=Math.max(n,Math.abs(p[e]-m[e])));h&&r.push(i),t+=h}console.warn(`people texcheck: ${e.length} baked body tiles against painting: ${t} bytes differ (worst ${n})${r.length?` in ${r.join(` `)}`:``}`)}var Y=`vRoot = (modelMatrix * vec4(0.0, 0.0, 0.0, 1.0)).xyz;`,nr=`vRoot = aSlot < -0.5 ? (modelMatrix * vec4(0.0, 0.0, 0.0, 1.0)).xyz : uRoots[int(aSlot + 0.5)].xyz;`,rr=`vec4 tex = sampleAtlas(vUv, vTile);`,ir=`vec4 tex = samplePeople(vUv, vTile, vMat.y);`,ar=`
+uniform sampler2D uHeadAtlas;
+uniform vec2 uHeadAtlasSize;
+vec4 samplePeople(vec2 uv, vec4 tile, float head) {
+  vec2 t = fract(uv);
+  t.y = 1.0 - t.y;
+  vec2 texSize = tile.zw * (head > 0.5 ? uHeadAtlasSize : uAtlasSize);
+  vec2 dx = dFdx(uv) * texSize, dy = dFdy(uv) * texSize;
+  float lod = clamp(0.5 * log2(max(dot(dx, dx), dot(dy, dy))), 0.0, uMaxLod);
+  vec2 at = tile.xy + t * tile.zw;
+  return head > 0.5 ? textureLod(uHeadAtlas, at, lod) : textureLod(uAtlas, at, lod);
+}
+`,or=`
+in float aSlot;
+in vec3 aSkin;
+uniform vec4 uRoots[256];
+uniform highp sampler2D uPose;
+void skinPeople(int row, out vec3 p, out vec3 n) {
+  int a = int(aSkin.x + 0.5) * 3;
+  vec4 hp = vec4(position, 1.0);
+  vec4 a0 = texelFetch(uPose, ivec2(a, row), 0), a1 = texelFetch(uPose, ivec2(a + 1, row), 0), a2 = texelFetch(uPose, ivec2(a + 2, row), 0);
+  p = vec3(dot(a0, hp), dot(a1, hp), dot(a2, hp));
+  n = vec3(dot(a0.xyz, normal), dot(a1.xyz, normal), dot(a2.xyz, normal));
+  float w = aSkin.z;
+  if (w < 0.999) {
+    int b = int(aSkin.y + 0.5) * 3;
+    vec4 b0 = texelFetch(uPose, ivec2(b, row), 0), b1 = texelFetch(uPose, ivec2(b + 1, row), 0), b2 = texelFetch(uPose, ivec2(b + 2, row), 0);
+    p = p * w + vec3(dot(b0, hp), dot(b1, hp), dot(b2, hp)) * (1.0 - w);
+    n = n * w + vec3(dot(b0.xyz, normal), dot(b1.xyz, normal), dot(b2.xyz, normal)) * (1.0 - w);
+  }
+}
+`;function X(e,t,n,r){if(!e.includes(t))throw Error(`people material: study L's ${r} shader no longer has "${t}" (src/people/whole/textures.ts patches it)`);return e.replace(t,n)}var Z={level:.88,keep:.2,max:1.25},sr=`
+out vec3 vMass;
+out float vCast;
+// the cast sun shadow on the whole figure, once: at its chest (1.3 m over its root), one bilinear tap of the map
+// (sunShadowAt's lookup without its spiral: per vertex, every vertex of a figure reads the same point, so it is kept cheap)
+float peopleCast(vec3 root) {
+#ifdef STYLE_SUN_SHADOW
+  if (uSunShadowParams.w < 0.5) return 0.0;
+  vec4 c = uSunShadowMatrix * vec4(root + vec3(0.0, 1.3, 0.0), 1.0);
+  vec3 q = c.xyz / c.w;
+  vec2 uv = q.xy * 0.5 + 0.5;
+  bool rev = uSunShadowParams.x > 0.5;
+  float d = rev ? q.z : q.z * 0.5 + 0.5;
+  vec2 e = min(uv, 1.0 - uv);
+  float edge = smoothstep(0.0, 0.06, min(e.x, e.y));
+  if (edge <= 0.0 || d < 0.0 || d > 1.0) return 0.0;
+  return sunShadowTap(uv, d, rev, uSunShadowParams.y, vec2(textureSize(uSunShadowMap, 0))) * edge;
+#else
+  return 0.0;
+#endif
+}
+vec3 peopleOct(float code) {
+  float f = code - 1.0;
+  float ix = floor(f / 4096.0), iy = f - ix * 4096.0;
+  vec2 e = vec2(ix, iy) / 4095.0 * 2.0 - 1.0;
+  vec3 v = vec3(e, 1.0 - abs(e.x) - abs(e.y));
+  float t = max(-v.z, 0.0);
+  v.xy += vec2(v.x >= 0.0 ? -t : t, v.y >= 0.0 ? -t : t);
+  return normalize(v);
+}
+`,cr=`
+vec3 skinPeopleN(int row, vec3 nb) {
+  int a = int(aSkin.x + 0.5) * 3;
+  vec3 n = vec3(dot(texelFetch(uPose, ivec2(a, row), 0).xyz, nb), dot(texelFetch(uPose, ivec2(a + 1, row), 0).xyz, nb), dot(texelFetch(uPose, ivec2(a + 2, row), 0).xyz, nb));
+  if (aSkin.z < 0.999) {
+    int b = int(aSkin.y + 0.5) * 3;
+    vec3 m = vec3(dot(texelFetch(uPose, ivec2(b, row), 0).xyz, nb), dot(texelFetch(uPose, ivec2(b + 1, row), 0).xyz, nb), dot(texelFetch(uPose, ivec2(b + 2, row), 0).xyz, nb));
+    n = n * aSkin.z + m * (1.0 - aSkin.z);
+  }
+  return n;
+}
+`,lr=`
+  {
+    // the head's paint as a painter lays it (its own light divided out but PAINT_KEEP of it)
+    float paintL = peoplePaintLight(vUv, vTile);
+    if (vMat.y > 0.5) {
+      tex.rgb *= mix(PAINT_LEVEL / paintL, 1.0, PAINT_KEEP);
+      base = tex.rgb * vBase;
+    }
+    // the face lit as one mass: the head's vertices carry the normal of an ellipsoid round the head (vMass)
+    bool mass = dot(vMass, vMass) > 0.25;
+    vec3 nl = mass ? normalize(vMass) : n;
+    vec3 lampG;
+    vec4 gsS = groundShade(vWorldPos, nl, lampG);
+    Surface S;
+    S.texel = vec4(tex.rgb, 1.0);
+    S.tint = vBase;
+    S.albedo = base;
+    S.uv = vUv;
+    S.tile = vTile;
+    S.pos = vWorldPos;
+    S.normal = nl;
+    vec3 eyeS = cameraPosition - vWorldPos;
+    S.dist = length(eyeS);
+    S.toEye = eyeS / max(S.dist, 1e-4);
+    S.amb = mix(uAmbGround, uAmbSky, nl.y * 0.5 + 0.5);
+    S.ndl = dot(nl, uSunDir);
+    S.sun = uSunColor * max((S.ndl + uLightWrap) / (1.0 + uLightWrap), 0.0);
+    S.shadow = gsS.y;
+    S.ao = gsS.x;
+    S.gloss = 0.0;
+    S.cutout = 0.0;
+    S.foliage = 0.0;
+    S.kind = 32 | (skin > 0.5 ? 64 : 0) | (mass ? 128 : 0);
+    S.above = gsS.w;
+    S.sunShadow = vCast;
+    S.light = vec3(0.0);
+    S.lamps = vec3(0.0);
+    S.sheen = vec3(0.0);
+#ifdef STYLE_ALBEDO
+    S.albedo = styleAlbedo(S);
+#endif
+    vec3 lightS = (S.amb + S.sun * (1.0 - max(S.shadow, S.sunShadow))) * (1.0 - S.ao);
+#ifdef STYLE_LIGHT
+    lightS = styleLight(S);
+#endif
+    S.light = lightS;
+    vec3 pf, pk, pl, ps;
+    personLight(vWorldPos, nl, V, 0.0, vRoot, pf, pk, pl, ps);
+    S.lamps = pl + spotLights(vWorldPos, nl);
+    vec3 colS = S.albedo * (S.light + S.lamps);
+#ifdef STYLE_SURFACE
+    colS = styleSurface(colS, S);
+#endif
+    colS = shoulder(colS);
+    vec3 VS = vWorldPos - cameraPosition;
+    float fS = fogAmount(vWorldPos, cameraPosition);
+#ifdef STYLE_FOG
+    colS = styleFog(colS, hazeColor(normalize(VS)), fS, S);
+#else
+    colS = mix(colS, hazeColor(normalize(VS)), fS);
+#endif
+    fragColor = vec4(dither(colS), 1.0);
+    return;
+  }
+`,ur=`
+in vec3 vMass;
+in float vCast;
+uniform float uHour;
+uniform float uTime;
+uniform float uLampOn;
+uniform vec3 uFoliageNight;
+uniform vec3 uGlowColor;
+uniform vec3 uWindowColors[4];
+uniform float uWindowsDark;
+uniform float uEmissiveKeep;
+uniform float uMacro;
+uniform vec3 uLeafNear;
+uniform vec2 uAsphaltTile;
+uniform vec3 uStreetGlow;
+uniform float uStreetGlowBase;
+uniform float uReflect;
+uniform vec3 uSkyZenith;
+uniform vec3 uSkyHorizon;
+uniform float uSkyPower;
+#define vGlow 0.0
+${g}
+// The head's paint without its painted light (bake.ts light). The game paint carries occlusion and the shadows parts
+// cast on each other, for study L's light; a style lays its own light, so the paint is divided by that light and keeps
+// PAINT_KEEP of it, on an open plane's level (PAINT_LEVEL: the face's value where nothing shades it is as before)
+uniform sampler2D uHeadLight;
+const float PAINT_LEVEL = ${Z.level.toFixed(3)}, PAINT_KEEP = ${Z.keep.toFixed(3)}, PAINT_MAX = ${Z.max.toFixed(3)};
+float peoplePaintLight(vec2 uv, vec4 tile) {
+  vec2 t = fract(uv);
+  t.y = 1.0 - t.y;
+  vec2 texSize = tile.zw * uHeadAtlasSize;
+  vec2 dx = dFdx(uv) * texSize, dy = dFdy(uv) * texSize;
+  float lod = clamp(0.5 * log2(max(dot(dx, dx), dot(dy, dy))) - 1.0, 0.0, uMaxLod);
+  return max(textureLod(uHeadLight, tile.xy + t * tile.zw, lod).r * PAINT_MAX, 0.25);
+}
+`;function dr(e,t,n=``){let r=x(C(`noround`)),i;e?(i=X(r.vertexShader,`in vec2 aMat;`,`in vec2 aMat;\n${or}`,`vertex`),i=X(i,`vec4 wp = modelMatrix * vec4(position, 1.0);`,`int pRow = int(aSlot + 0.5);
+  vec3 pRoot = uRoots[pRow].xyz, sPos, sNrm;
+  skinPeople(pRow, sPos, sNrm);
+  vec4 wp = modelMatrix * vec4(sPos + pRoot, 1.0);`,`vertex`),i=X(i,`vec3 n = normalize(mat3(modelMatrix) * normal);`,`vec3 n = normalize(mat3(modelMatrix) * normalize(sNrm));`,`vertex`),i=X(i,Y,`vRoot = pRoot;`,`vertex`),t&&(i=X(i,`void main() {`,`${n}${sr}${cr}\nvoid main() {`,`vertex`),i=X(i,`vec3 n = normalize(mat3(modelMatrix) * normalize(sNrm));`,`vec3 n = normalize(mat3(modelMatrix) * normalize(sNrm));
+  vMass = aColor.a > 0.5 ? normalize(mat3(modelMatrix) * skinPeopleN(pRow, peopleOct(aColor.a))) : vec3(0.0);
+  vCast = peopleCast(pRoot);`,`vertex`))):(i=X(r.vertexShader,Y,nr,`vertex`),i=X(i,`in vec2 aMat;`,`in vec2 aMat;
+in float aSlot;
+uniform vec4 uRoots[256];`,`vertex`),t&&(i=X(i,`void main() {`,`${n}${sr}\nvoid main() {`,`vertex`),i=X(i,`vec3 n = normalize(mat3(modelMatrix) * normal);`,`vec3 n = normalize(mat3(modelMatrix) * normal);
+  vMass = aColor.a > 0.5 ? normalize(mat3(modelMatrix) * peopleOct(aColor.a)) : vec3(0.0);
+  vCast = peopleCast((modelMatrix * vec4(0.0, 0.0, 0.0, 1.0)).xyz);`,`vertex`)));let a=X(r.fragmentShader,rr,ir,`fragment`);return a=X(a,`void main() {`,`${ar}${t?`${ur}${t}`:``}\nvoid main() {`,`fragment`),t&&(a=X(a,`vec3 fill, key, lamps, sheen;`,`${lr}\n  vec3 fill, key, lamps, sheen;`,`fragment`)),{vertexShader:i,fragmentShader:a}}function fr(e,t,n,r,i,a,o){let c=x(C(`noround`)),{vertexShader:l,fragmentShader:d}=dr(!!o,``),f=new s({glslVersion:c.glslVersion,uniforms:{...c.uniforms,uAtlas:{value:e},uAtlasSize:{value:new u(...t)},uHeadAtlas:{value:n},uHeadAtlasSize:{value:new u(...r)},uHeadLight:{value:i},uRoots:{value:a},...o?{uPose:{value:o}}:{}},vertexShader:l,fragmentShader:d,defaultAttributeValues:{...c.defaultAttributeValues,aSlot:[-1],...o?{aSkin:[0,0,1]}:{}}});return f.name=o?`people (skinned)`:`people`,f}function pr(){let t=new i(new Float32Array(K*256*4),K,256,l,e);return t.minFilter=t.magFilter=r,t.generateMipmaps=!1,t.flipY=!1,t.colorSpace=``,t.needsUpdate=!0,t}var Q=``;function mr(e){let t=H.def,n=!!t&&p.sunShadow.enabled,r=`${H.version}|${n}`;if(r===Q)return;Q=r;let i=_(t,n),a=v(t,n);for(let[n,r]of[[e.material,!1],[e.skinned,!0]]){let e=dr(r,i,a);for(let[e,t]of Object.entries(h))e in n.uniforms||(n.uniforms[e]=t);for(let[e,r]of Object.entries(t?.uniforms??{}))e in n.uniforms||(n.uniforms[e]=r);(n.vertexShader!==e.vertexShader||n.fragmentShader!==e.fragmentShader)&&(n.vertexShader=e.vertexShader,n.fragmentShader=e.fragmentShader,n.needsUpdate=!0)}}async function hr(e,r,a){let[s,l]=[e.size[0]/2,e.size[1]/2],u=document.createElement(`canvas`);u.width=s,u.height=l;let f=u.getContext(`2d`,{willReadFrequently:!0}),p=Math.round(Z.level/Z.max*255);f.fillStyle=`rgb(${p},${p},${p})`,f.fillRect(0,0,s,l),f.imageSmoothingEnabled=!0;let m=0;for(let t of r){let n=er[`./heads/light/h-${t}-light.png`],r=w(t);if(!n||!e.has(r)){a.push(`light ${t}`);continue}let i=new Image;i.src=n,await i.decode();let o=e.get(r),[s,c,l,u]=[o.x/2,o.y/2,o.w/2,o.h/2];f.drawImage(i,s-3,c-3,l+6,u+6),f.drawImage(i,s,c,l,u),m++}if(!m)return null;let h=f.getImageData(0,0,s,l).data,g=new Uint8Array(s*l);for(let e=0;e<g.length;e++)g[e]=h[e*4];let _=new i(g,s,l,n,c);return _.flipY=!1,_.colorSpace=``,_.magFilter=t,_.minFilter=d,_.generateMipmaps=!0,_.unpackAlignment=1,_.wrapS=_.wrapT=o,_.needsUpdate=!0,_}var gr=(e,t,n)=>{$&&mr($),S(e,t,n)},_r=null;function vr(){return _r??=xr().then(e=>$=e)}var $=null;function yr(e){let t=$;t&&e.traverse(e=>{let n=e;n.isMesh&&(n.material=t.material,n.onBeforeRender=gr)})}var br=!!globalThis.process?.versions?.node;async function xr(){if(typeof document>`u`||br)return null;let e=performance.now(),t={...ee,...te,...b},n=new Map,r=[],i=[];for(let e of[`flat`,...Qn]){let a=q[`./bodies/${e}.png`];a&&b[e]&&!J.has(`paintbodies`)?(n.set(e,{size:b[e].size,src:a,source:`self-made`}),i.push(e)):t[e]?n.set(e,t[e]):r.push(e)}J.has(`texcheck`)&&tr(i);let o=new Map;for(let e of[...ne,re.head]){let t=w(e),n=$n[`./heads/${t}.png`];n?o.set(t,{size:256,src:n,source:`self-made`}):r.push(t)}let s=h.uWireTile.value.clone(),c=h.uAsphaltTile.value.clone(),l=performance.now(),u=await F.build(n,1),d=performance.now(),f=await F.build(o,1),p=performance.now();h.uWireTile.value.copy(s),h.uAsphaltTile.value.copy(c);let m=Array.from({length:256},()=>new a),g=await hr(f,[...ne,re.head],r),_=fr(u.texture,u.size,f.texture,f.size,g,m),v=pr(),y=fr(u.texture,u.size,f.texture,f.size,g,m,v),x=e=>e.names().reduce((t,n)=>t+e.get(n).w*e.get(n).h,0),S=u.get(`flat`),C=new Set;r.length&&console.warn(`people: no texture for ${r.join(`, `)} (bake.ts writes heads/ and heads/tiles.json)`);let T={bodies:u,heads:f,headLight:g,material:_,skinned:y,pose:v,roots:m,tile(e,t){let n=t?f:u;return n.has(e)?n.get(e):(C.has(e)||(C.add(e),console.warn(`people: tile "${e}" is not in the people's textures (re-run bake.ts): drawn flat`)),S)},stats:{ms:performance.now()-e,bodiesMs:d-l,headsMs:p-d,bodyTiles:n.size,headTiles:o.size,bodyTexels:x(u),headTexels:x(f),missing:r}};return Q=``,mr(T),T}export{ce as _,L as a,le as b,me as c,H as d,pe as f,D as g,k as h,yr as i,de as l,F as m,gr as n,R as o,G as p,vr as r,V as s,K as t,z as u,j as v,M as x,O as y};

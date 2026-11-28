@@ -1,0 +1,1 @@
+var e=new Map,t=0;function n(n){let r=`traffic-${++t}`;return e.set(r,n),r}function r(){return e.get(`traffic-${t}`)}export{n,r as t};

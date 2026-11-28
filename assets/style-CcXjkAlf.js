@@ -1,0 +1,1 @@
+import{t as e}from"./build-DWNuKDJn.js";var t=e(`line-wash`,`Gouache x COO, line and wash: Gouache washes under a coloured pen line from depth, hatched occlusion and spotted darks, stepped hue-keeping distance, a drawn sky, paper.`,{dots:0,plates:0,gap:.3,ink:1,paint:0});export{t as default};

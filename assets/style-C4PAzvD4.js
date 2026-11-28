@@ -1,0 +1,1 @@
+import{t as e}from"./build-kp3ATjHp.js";var t=e(`comic-wash`,`Gouache x COO, comic wash: line and wash with Ben-Day dots for occlusion, misregistered plates, dot halos round lamps, dot-screened sky bands.`,{dots:1,plates:1.6,gap:0,ink:1,paint:0});export{t as default};

@@ -1,0 +1,1 @@
+function e(e){return(180-e)*Math.PI/180}export{e as t};

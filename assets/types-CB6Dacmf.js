@@ -1,0 +1,1 @@
+function e(e){return(180-e)*Math.PI/180}function t(e){return((180-e*180/Math.PI)%360+360)%360}function n(e){let t=e*Math.PI/180;return[Math.sin(t),0,-Math.cos(t)]}var r=(e,t,n)=>e<t?t:e>n?n:e,i=(e,t)=>t<=0?1:1-.5**(e/t);export{t as a,e as i,r as n,n as r,i as t};
